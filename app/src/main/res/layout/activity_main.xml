@@ -42,6 +42,41 @@
             android:inputType="numberSigned" />
     </android.support.design.widget.TextInputLayout>
 
+    <TextView
+        android:text="Jumlah Orang"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/radioGroupJumlah">
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Dibawah 100"
+            android:id="@+id/radioButtonBawah" />
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="100 - 300"
+            android:id="@+id/radioButtonTengah" />
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="300 - 800"
+            android:id="@+id/radioButtonAtas" />
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Diatas 800"
+            android:id="@+id/radioButtonAtasB" />
+    </RadioGroup>
+
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -59,4 +94,5 @@
         android:layout_height="wrap_content"
         android:text="Hasil"
         android:id="@+id/textViewHasil" />
+
 </LinearLayout>

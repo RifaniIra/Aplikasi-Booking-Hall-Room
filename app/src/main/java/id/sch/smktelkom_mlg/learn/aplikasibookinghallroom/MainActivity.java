@@ -5,12 +5,15 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
     EditText etNama;
     EditText etNomor;
     Button bOK;
+    RadioGroup rgJumlah;
     TextView tvHasil;
 
     @Override
@@ -21,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
         etNama = (EditText) findViewById(R.id.editTextNama);
         etNomor = (EditText) findViewById(R.id.editTextNomor);
         bOK = (Button) findViewById(R.id.buttonOK);
+        rgJumlah = (RadioGroup) findViewById(R.id.radioGroupJumlah);
         tvHasil = (TextView) findViewById(R.id.textViewHasil);
 
         bOK.setOnClickListener(new View.OnClickListener() {
@@ -34,10 +38,19 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void doProcess() {
+        String hasil = null;
+        if(rgJumlah.getCheckedRadioButtonId()!=-1)
+        {
+            RadioButton rb = (RadioButton)
+                    findViewById(rgJumlah.getCheckedRadioButtonId());
+            hasil = rb.getText().toString();
+        }
+
         if(isValid()) {
             String nama = etNama.getText().toString();
             int nomor = Integer.parseInt(etNomor.getText().toString());
-            tvHasil.setText(nama + "No. KTP = " + nomor);
+            tvHasil.setText(nama + "No. KTP = " + nomor + "Jumlah " + hasil);
+
         }
     }
 
@@ -46,6 +59,7 @@ public class MainActivity extends AppCompatActivity {
 
         String nama = etNama.getText().toString();
         String nomor = etNomor.getText().toString();
+
 
         if(nama.isEmpty())
         {
@@ -70,6 +84,9 @@ public class MainActivity extends AppCompatActivity {
         else {
             etNomor.setError(null);
         }
+
+
+
         return valid;
     }
 }
