@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent">
+<LinearLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -45,7 +48,8 @@
     <TextView
         android:text="Jumlah Orang"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:textColor="#ea3838" />
 
     <RadioGroup
         android:layout_width="match_parent"
@@ -77,6 +81,48 @@
             android:id="@+id/radioButtonAtasB" />
     </RadioGroup>
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Fasilitas Tambahan"
+        android:id="@+id/textViewFata"
+        android:textColor="#ea3838" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Makanan dan Minuman"
+        android:id="@+id/checkBoxMM"
+        android:checked="false" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Karaoke Set"
+        android:id="@+id/checkBoxKS"
+        android:checked="false" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cindera Mata"
+        android:id="@+id/checkBoxCM"
+        android:checked="false" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ekstra Audio"
+        android:id="@+id/checkBoxEA"
+        android:checked="false" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Seperangkat Laptop"
+        android:id="@+id/checkBoxSL"
+        android:checked="false" />
+
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -87,12 +133,11 @@
         android:id="@+id/buttonOK" />
 
     <TextView
-        android:layout_marginTop="8dp"
-        android:padding="16dp"
-        android:gravity="center_horizontal"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Hasil"
-        android:id="@+id/textViewHasil" />
+        android:id="@+id/textViewHasil"
+        android:textColor="#3248ee" />
 
 </LinearLayout>
+</ScrollView>
