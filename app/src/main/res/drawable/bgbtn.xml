@@ -7,5 +7,4 @@
         android:drawable="@color/colorAccent"/>
     <item android:drawable="@color/colorPrimary"/>
 
-
 </selector>

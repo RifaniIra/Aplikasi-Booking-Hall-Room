@@ -16,11 +16,13 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Aplikasi Pemesanan Hall Room" />
+        android:text="Aplikasi Pemesanan Hall Room"
+        android:textColor="#2323d4" />
 
     <ImageView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:src="@drawable/ff" />
 
     <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
@@ -42,7 +44,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/editTextNomor"
-            android:inputType="numberSigned" />
+            android:inputType="number"
+            />
     </android.support.design.widget.TextInputLayout>
 
     <TextView
@@ -60,25 +63,29 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Dibawah 100"
-            android:id="@+id/radioButtonBawah" />
+            android:id="@+id/radioButtonBawah"
+            android:textColor="#2b2fad" />
 
         <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="100 - 300"
-            android:id="@+id/radioButtonTengah" />
+            android:id="@+id/radioButtonTengah"
+            android:textColor="#2b2fad" />
 
         <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="300 - 800"
-            android:id="@+id/radioButtonAtas" />
+            android:id="@+id/radioButtonAtas"
+            android:textColor="#2b2fad" />
 
         <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Diatas 800"
-            android:id="@+id/radioButtonAtasB" />
+            android:id="@+id/radioButtonAtasB"
+            android:textColor="#2b2fad" />
     </RadioGroup>
 
     <TextView
@@ -93,35 +100,58 @@
         android:layout_height="wrap_content"
         android:text="Makanan dan Minuman"
         android:id="@+id/checkBoxMM"
-        android:checked="false" />
+        android:checked="false"
+        android:textColor="#2b2fad" />
 
     <CheckBox
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Karaoke Set"
         android:id="@+id/checkBoxKS"
-        android:checked="false" />
+        android:checked="false"
+        android:textColor="#2b2fad" />
 
     <CheckBox
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Cindera Mata"
         android:id="@+id/checkBoxCM"
-        android:checked="false" />
+        android:checked="false"
+        android:textColor="#2b2fad" />
 
     <CheckBox
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Ekstra Audio"
         android:id="@+id/checkBoxEA"
-        android:checked="false" />
+        android:checked="false"
+        android:textColor="#2b2fad" />
 
     <CheckBox
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Seperangkat Laptop"
         android:id="@+id/checkBoxSL"
-        android:checked="false" />
+        android:checked="false"
+        android:textColor="#2b2fad" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Pilih Jenis dan Kelas Ruang"
+        android:id="@+id/textView"
+        android:textColor="#ea3838" />
+
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:entries="@array/jenis"
+        android:id="@+id/spinnerJenis" />
+
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/spinnerKelas" />
 
     <Button
         android:layout_width="match_parent"

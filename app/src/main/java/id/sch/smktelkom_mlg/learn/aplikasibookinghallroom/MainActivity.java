@@ -3,13 +3,21 @@ package id.sch.smktelkom_mlg.learn.aplikasibookinghallroom;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Spinner;
 import android.widget.TextView;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+
+import id.sch.smktelkom_mlg.learn.aplikasibookinghallroom.adapter.KelasAdapter;
 
 public class MainActivity extends AppCompatActivity implements CompoundButton.OnCheckedChangeListener{
     EditText etNama;
@@ -19,7 +27,11 @@ public class MainActivity extends AppCompatActivity implements CompoundButton.On
     TextView tvHasil, tvFata;
     CheckBox cbMM, cbKS, cbCM, cbEA, cbSL;
     int nFata;
-
+    Spinner spJenis, spKelas;
+    String[][] arKelas = {{"A (class A)","B (class B)","C (class C)"},
+            {"A1","A2","B1","B2"},{"A3","A4","B3","B4"},{"C1","C2","C3","C4"}};
+    ArrayList<String> listKelas = new ArrayList<>();
+    KelasAdapter adapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,6 +50,12 @@ public class MainActivity extends AppCompatActivity implements CompoundButton.On
         cbSL = (CheckBox) findViewById(R.id.checkBoxSL);
 
         tvFata = (TextView) findViewById(R.id.textViewFata);
+
+        spJenis = (Spinner) findViewById(R.id.spinnerJenis);
+        spKelas = (Spinner) findViewById((R.id.spinnerKelas));
+        adapter = new KelasAdapter(this,listKelas);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spKelas.setAdapter(adapter);
         bOK.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -46,6 +64,25 @@ public class MainActivity extends AppCompatActivity implements CompoundButton.On
 
             }
         });
+
+        spJenis.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()
+        {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int pos, long id)
+            {
+                listKelas.clear();
+                listKelas.addAll(Arrays.asList(arKelas[pos]));
+                adapter.setJenis((String)spJenis.getItemAtPosition(pos));
+                adapter.notifyDataSetChanged();
+                spKelas.setSelection(0);
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView)
+            {
+
+            }
+        }
+        );
 
         cbMM.setOnCheckedChangeListener(this);
         cbKS.setOnCheckedChangeListener(this);
@@ -80,11 +117,14 @@ public class MainActivity extends AppCompatActivity implements CompoundButton.On
 
         if(isValid()) {
             String nama = etNama.getText().toString();
-            int nomor = Integer.parseInt(etNomor.getText().toString());
-            tvHasil.setText("Nama            : " + nama +  "\n" +
-                            "No. KTP        : " + nomor + "\n" +
-                            "Jumlah          : " + hasil + "\n" +
-                            hasil2);
+            String nomor = etNomor.getText().toString();
+            tvHasil.setText("Nama            : " + nama +  "\n\n" +
+                            "No. KTP        : " + nomor + "\n\n" +
+                            "Jumlah          : " + hasil + "\n\n" +
+                            hasil2 + "\n" +
+                            "Anda memilih jenis ruang : " + spJenis.getSelectedItem().toString()
+                            + " dan Kelas (Nomor) Ruang"  + spKelas.getSelectedItem().toString()+ "\n\n" +
+                            "Terimkasih telah memesan");
 
         }
     }
@@ -95,12 +135,12 @@ public class MainActivity extends AppCompatActivity implements CompoundButton.On
         String nama = etNama.getText().toString();
         String nomor = etNomor.getText().toString();
 
-
         if(nama.isEmpty())
         {
             etNama.setError("Nama Belum Diisi");
             valid = false;
         }
+
         else if(nama.length()<3)
         {
             etNama.setError("Nama Minimal 3 Karakter");
@@ -110,16 +150,20 @@ public class MainActivity extends AppCompatActivity implements CompoundButton.On
         {
             etNama.setError(null);
         }
-
         if(nomor.isEmpty())
         {
             etNomor.setError("Nomor KTP Belum Diisi");
             valid = false;
         }
+
+        else if(nomor.length()!=16)
+        {
+            etNomor.setError("Jumlah nomor KTP tidak benar");
+            valid = false;
+        }
         else {
             etNomor.setError(null);
         }
-
         return valid;
     }
 
